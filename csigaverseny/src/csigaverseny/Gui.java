@@ -4,21 +4,51 @@
  */
 package csigaverseny;
 
-/**
- *
- * @author norbert
- */
 public class Gui extends javax.swing.JFrame {
-
+    private static final int SNAIL_DEFAULT_X = 58;
+    private static final int RED_SNAIL_DEFAULT_Y = 48;
+    private static final int GREEN_SNAIL_DEFAULT_Y = 108;
+    private static final int BLUE_SNAIL_DEFAULT_Y = 174;
+    
     private IGame game;
     
     public Gui(IGame game) {
+        setLayout(null);
         this.game = game;
         initComponents();
         custumizeComponents();
     }
     
     private void custumizeComponents() {
+    }
+    
+    private void resetSnailsPos() {
+        snailRed.setLocation(SNAIL_DEFAULT_X, RED_SNAIL_DEFAULT_Y);
+        snailGreen.setLocation(SNAIL_DEFAULT_X, GREEN_SNAIL_DEFAULT_Y);
+        snailBlue.setLocation(SNAIL_DEFAULT_X, BLUE_SNAIL_DEFAULT_Y);    
+    }
+    
+    private void replaceSnails() {
+        System.out.println("red " +snailRed.getLocation().toString());
+        System.out.println("green " +snailGreen.getLocation().toString());
+        System.out.println("blue " +snailBlue.getLocation().toString());
+        
+        
+        var redDistance = game.GetSnailDistance("Red");
+        var greenDistance = game.GetSnailDistance("Green");
+        var blueDistance = game.GetSnailDistance("Blue");
+        
+        System.out.println("red " + redDistance);
+        System.out.println("green " + greenDistance);
+        System.out.println("blue " + blueDistance);
+        
+        snailRed.setLocation(SNAIL_DEFAULT_X + redDistance*20, RED_SNAIL_DEFAULT_Y);
+        snailGreen.setLocation(SNAIL_DEFAULT_X + greenDistance*20, GREEN_SNAIL_DEFAULT_Y);
+        snailBlue.setLocation(SNAIL_DEFAULT_X + blueDistance*20, BLUE_SNAIL_DEFAULT_Y);
+
+        System.out.println("red " +snailRed.getLocation().toString());
+        System.out.println("green " +snailGreen.getLocation().toString());
+        System.out.println("blue " +snailBlue.getLocation().toString());
     }
 
     /**
@@ -44,6 +74,7 @@ public class Gui extends javax.swing.JFrame {
         betLabel = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         betBox = new javax.swing.JComboBox<>();
+        gameState = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("mainFrame"); // NOI18N
@@ -128,7 +159,7 @@ public class Gui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(snailRed)
-                        .addGap(39, 39, 39)))
+                        .addGap(40, 40, 40)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(aLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(snailGreen))
@@ -157,6 +188,8 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        gameState.setFont(new java.awt.Font("Liberation Sans", 1, 20)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -171,18 +204,25 @@ public class Gui extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(692, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addComponent(gameState, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(245, 245, 245))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(betLabel)
-                    .addComponent(betBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(betLabel)
+                            .addComponent(betBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(gameState, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         desktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -204,7 +244,7 @@ public class Gui extends javax.swing.JFrame {
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -226,7 +266,10 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        //resetSnailsPos();
         game.StartRace();
+        gameState.setText("<html>Winner: " + game.GetWinner() + "<br>" + game.GetBetState() + "</html>");     
+        replaceSnails();
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void betBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betBoxActionPerformed
@@ -261,6 +304,7 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> betBox;
     private javax.swing.JLabel betLabel;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JLabel gameState;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel rLabel;

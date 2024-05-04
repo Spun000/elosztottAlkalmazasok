@@ -8,8 +8,6 @@ public class Csigaverseny {
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.SetCurrentBet(SnailColor.Blue);
-        game.StartRace();
         Gui.InitGui(game);
     }
     

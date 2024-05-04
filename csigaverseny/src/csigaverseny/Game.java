@@ -11,6 +11,9 @@ import java.util.Random;
 interface IGame {
     public void StartRace();
     public void SetCurrentBet(SnailColor bet);
+    public String GetWinner();
+    public String GetBetState();
+    public int GetSnailDistance(String snailColor);
 }
 
 
@@ -33,20 +36,8 @@ public class Game implements IGame {
         resetSnails();
         // Handle rounds
         for (int i = 1; i <= MAX_ROUNDS; i++){
-            System.out.println("round: " + i);
+            //System.out.println("round: " + i);
             startRound();   
-        }
-        var winner = getWinner();
-        System.out.println("winner: " + winner);
-        if (currentBet == SnailColor.NoColor)
-        {
-            return;
-        }
-        if (currentBet.toString().equals(winner))
-        {
-            System.out.println("bet won");
-        } else {
-            System.out.println("bet lost, bet on: " + currentBet.toString() + ", winner: " + winner);
         }
     }
     
@@ -60,7 +51,7 @@ public class Game implements IGame {
         boolean boostUsed = false;
         for (Snail snail : snails.values()) {
             var currentStep = snail.Step();
-            System.out.println("step: " + currentStep);
+            //System.out.println("step: " + currentStep);
             if (!boostUsed && haveBoost()) {
                 System.out.println("boosted");
                 boostUsed = true;
@@ -75,7 +66,7 @@ public class Game implements IGame {
         return rand.nextInt(1, 6) == 1;
     }
     
-    private String getWinner() {
+    public String GetWinner() {
         int maxStep = -1;
         String winnerColor = "";
         for (var entry : snails.entrySet()) {
@@ -92,5 +83,22 @@ public class Game implements IGame {
     public void SetCurrentBet(SnailColor bet) {
         System.out.println("new bet: " + bet.toString());
         currentBet = bet;
+    }
+    
+    public String GetBetState() {
+        if (currentBet == SnailColor.NoColor)
+        {
+            return "No bet was placed";
+        }
+        if (currentBet.toString().equals(GetWinner()))
+        {
+            return "Bet won";
+        } else {
+            return "Bet lost";
+        }
+    }
+    
+    public int GetSnailDistance(String snailColor) {
+        return snails.get(snailColor).GetDistance();
     }
 }
