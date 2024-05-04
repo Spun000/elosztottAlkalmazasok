@@ -4,7 +4,7 @@
  */
 package csigaverseny;
 
-import java.util.Random
+import java.util.Random;
 
 enum SnailColor {
     NoColor,

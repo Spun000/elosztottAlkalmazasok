@@ -15,11 +15,11 @@ public class Game {
     
     private static final int MAX_ROUNDS = 5;
     
-    //private SnailColor currentBet;
+    private SnailColor currentBet;
     private HashMap<String, Snail> snails;
     
     public Game() {
-        //currentBet = SnailColor.NoColor;
+        currentBet = SnailColor.NoColor;
         snails = new HashMap<>();
         snails.put(SnailColor.Blue.toString(), new Snail());
         snails.put(SnailColor.Green.toString(), new Snail());
@@ -35,6 +35,12 @@ public class Game {
         }
         var winner = getWinner();
         System.out.println("winner: " + winner);
+        if (currentBet.toString().equals(winner))
+        {
+            System.out.println("bet won");
+        } else {
+            System.out.println("bet lost, bet on: " + currentBet.toString() + ", winner: " + winner);
+        }
     }
     
     private void resetSnails() {
@@ -74,5 +80,9 @@ public class Game {
             }
         }
         return winnerColor;
+    }
+    
+    public void SetCurrentBet(SnailColor bet) {
+        currentBet = bet;
     }
 }
