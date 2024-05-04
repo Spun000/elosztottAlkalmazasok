@@ -36,7 +36,7 @@ public class Game implements IGame {
         resetSnails();
         // Handle rounds
         for (int i = 1; i <= MAX_ROUNDS; i++){
-            //System.out.println("round: " + i);
+            System.out.println("round: " + i);
             startRound();   
         }
     }
@@ -51,7 +51,7 @@ public class Game implements IGame {
         boolean boostUsed = false;
         for (Snail snail : snails.values()) {
             var currentStep = snail.Step();
-            //System.out.println("step: " + currentStep);
+            System.out.println("step: " + currentStep);
             if (!boostUsed && haveBoost()) {
                 System.out.println("boosted");
                 boostUsed = true;

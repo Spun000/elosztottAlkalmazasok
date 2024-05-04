@@ -13,42 +13,18 @@ public class Gui extends javax.swing.JFrame {
     private IGame game;
     
     public Gui(IGame game) {
-        setLayout(null);
         this.game = game;
         initComponents();
-        custumizeComponents();
-    }
-    
-    private void custumizeComponents() {
-    }
-    
-    private void resetSnailsPos() {
-        snailRed.setLocation(SNAIL_DEFAULT_X, RED_SNAIL_DEFAULT_Y);
-        snailGreen.setLocation(SNAIL_DEFAULT_X, GREEN_SNAIL_DEFAULT_Y);
-        snailBlue.setLocation(SNAIL_DEFAULT_X, BLUE_SNAIL_DEFAULT_Y);    
     }
     
     private void replaceSnails() {
-        System.out.println("red " +snailRed.getLocation().toString());
-        System.out.println("green " +snailGreen.getLocation().toString());
-        System.out.println("blue " +snailBlue.getLocation().toString());
-        
-        
         var redDistance = game.GetSnailDistance("Red");
         var greenDistance = game.GetSnailDistance("Green");
         var blueDistance = game.GetSnailDistance("Blue");
         
-        System.out.println("red " + redDistance);
-        System.out.println("green " + greenDistance);
-        System.out.println("blue " + blueDistance);
-        
         snailRed.setLocation(SNAIL_DEFAULT_X + redDistance*20, RED_SNAIL_DEFAULT_Y);
         snailGreen.setLocation(SNAIL_DEFAULT_X + greenDistance*20, GREEN_SNAIL_DEFAULT_Y);
         snailBlue.setLocation(SNAIL_DEFAULT_X + blueDistance*20, BLUE_SNAIL_DEFAULT_Y);
-
-        System.out.println("red " +snailRed.getLocation().toString());
-        System.out.println("green " +snailGreen.getLocation().toString());
-        System.out.println("blue " +snailBlue.getLocation().toString());
     }
 
     /**
@@ -77,11 +53,16 @@ public class Gui extends javax.swing.JFrame {
         gameState = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(986, 566));
+        setMinimumSize(new java.awt.Dimension(986, 566));
         setName("mainFrame"); // NOI18N
+        setResizable(false);
 
-        desktop.setMaximumSize(new java.awt.Dimension(30, 2147483647));
+        desktop.setMaximumSize(new java.awt.Dimension(986, 566));
+        desktop.setMinimumSize(new java.awt.Dimension(986, 566));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(968, 231));
+        jPanel1.setLayout(null);
 
         tLabel.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         tLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -89,6 +70,8 @@ public class Gui extends javax.swing.JFrame {
         tLabel.setMaximumSize(new java.awt.Dimension(25, 45));
         tLabel.setMinimumSize(new java.awt.Dimension(25, 45));
         tLabel.setPreferredSize(new java.awt.Dimension(25, 45));
+        jPanel1.add(tLabel);
+        tLabel.setBounds(6, 56, 40, 40);
 
         sLabel.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         sLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,6 +79,8 @@ public class Gui extends javax.swing.JFrame {
         sLabel.setMaximumSize(new java.awt.Dimension(25, 45));
         sLabel.setMinimumSize(new java.awt.Dimension(25, 45));
         sLabel.setPreferredSize(new java.awt.Dimension(25, 45));
+        jPanel1.add(sLabel);
+        sLabel.setBounds(6, 6, 40, 40);
 
         rLabel.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         rLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -103,6 +88,8 @@ public class Gui extends javax.swing.JFrame {
         rLabel.setMaximumSize(new java.awt.Dimension(25, 45));
         rLabel.setMinimumSize(new java.awt.Dimension(25, 45));
         rLabel.setPreferredSize(new java.awt.Dimension(25, 45));
+        jPanel1.add(rLabel);
+        rLabel.setBounds(6, 148, 40, 40);
 
         aLabel.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         aLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -110,6 +97,8 @@ public class Gui extends javax.swing.JFrame {
         aLabel.setMaximumSize(new java.awt.Dimension(25, 45));
         aLabel.setMinimumSize(new java.awt.Dimension(25, 45));
         aLabel.setPreferredSize(new java.awt.Dimension(40, 40));
+        jPanel1.add(aLabel);
+        aLabel.setBounds(6, 102, 40, 40);
 
         tLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 40)); // NOI18N
         tLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -117,60 +106,26 @@ public class Gui extends javax.swing.JFrame {
         tLabel2.setMaximumSize(new java.awt.Dimension(25, 45));
         tLabel2.setMinimumSize(new java.awt.Dimension(25, 45));
         tLabel2.setPreferredSize(new java.awt.Dimension(25, 45));
+        jPanel1.add(tLabel2);
+        tLabel2.setBounds(6, 194, 40, 40);
 
         snailRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csigaverseny/GuiImages/snailRed.png"))); // NOI18N
+        snailRed.setMaximumSize(new java.awt.Dimension(60, 35));
+        snailRed.setMinimumSize(new java.awt.Dimension(60, 35));
+        snailRed.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel1.add(snailRed);
+        snailRed.setBounds(52, 42, 60, 35);
 
         snailGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csigaverseny/GuiImages/snailGreen.png"))); // NOI18N
+        snailGreen.setMaximumSize(new java.awt.Dimension(60, 35));
+        snailGreen.setMinimumSize(new java.awt.Dimension(60, 35));
+        snailGreen.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel1.add(snailGreen);
+        snailGreen.setBounds(52, 102, 60, 35);
 
         snailBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/csigaverseny/GuiImages/snailBlue.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(snailBlue))
-                    .addComponent(tLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(aLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(snailGreen)
-                            .addComponent(snailRed))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(sLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(tLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(snailRed)
-                        .addGap(40, 40, 40)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(snailGreen))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(snailBlue))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel1.add(snailBlue);
+        snailBlue.setBounds(52, 168, 60, 35);
 
         betLabel.setText("Current bet");
 
@@ -204,7 +159,7 @@ public class Gui extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gameState, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(245, 245, 245))
         );
@@ -235,10 +190,9 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(desktopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(desktopLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE))
+                .addContainerGap())
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,18 +209,17 @@ public class Gui extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        //resetSnailsPos();
         game.StartRace();
         gameState.setText("<html>Winner: " + game.GetWinner() + "<br>" + game.GetBetState() + "</html>");     
         replaceSnails();
