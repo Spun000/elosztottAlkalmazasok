@@ -7,11 +7,14 @@ package csigaverseny;
 import java.util.HashMap;
 import java.util.Random;
         
-/**
- *
- * @author norbert
- */
-public class Game {
+
+interface IGame {
+    public void StartRace();
+    public void SetCurrentBet(SnailColor bet);
+}
+
+
+public class Game implements IGame {
     
     private static final int MAX_ROUNDS = 5;
     
@@ -35,6 +38,10 @@ public class Game {
         }
         var winner = getWinner();
         System.out.println("winner: " + winner);
+        if (currentBet == SnailColor.NoColor)
+        {
+            return;
+        }
         if (currentBet.toString().equals(winner))
         {
             System.out.println("bet won");
@@ -83,6 +90,7 @@ public class Game {
     }
     
     public void SetCurrentBet(SnailColor bet) {
+        System.out.println("new bet: " + bet.toString());
         currentBet = bet;
     }
 }

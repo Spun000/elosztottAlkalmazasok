@@ -4,20 +4,13 @@
  */
 package csigaverseny;
 
-/**
- *
- * @author norbert
- */
 public class Csigaverseny {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Game game = new Game();
         game.SetCurrentBet(SnailColor.Blue);
         game.StartRace();
-        
+        Gui.InitGui(game);
     }
     
 }

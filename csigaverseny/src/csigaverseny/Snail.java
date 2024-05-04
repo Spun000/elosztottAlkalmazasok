@@ -12,11 +12,7 @@ enum SnailColor {
     Green,
     Red
 }
-        
-/**
- *
- * @author norbert
- */
+
 public class Snail extends Racer {
     private static final Random rand = new Random();
     private static final int MIN_DISTANCE = 0;

@@ -4,10 +4,6 @@
  */
 package csigaverseny;
 
-/**
- *
- * @author norbert
- */
 abstract class Racer {
     private int currentDistance;
     
